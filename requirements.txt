@@ -1,4 +1,2 @@
-
 python-telegram-bot==22.6
 yt-dlp[default]
-Flask
