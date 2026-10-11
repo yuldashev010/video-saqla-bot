@@ -20,11 +20,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Salom! 👋\n"
-        "Menga YouTube, Instagram yoki TikTok video havolasini yubor."
+        "👋 Assalomu alaykum!\n\n"
+        "📥 VIDEO SAQLA BOT ga xush kelibsiz!\n\n"
+        "🎬 YouTube, Instagram yoki TikTok videosini saqlamoqchimisiz?\n"
+        "🔗 Shunchaki video havolasini yuboring — qolganini bot bajaradi!"
     )
+
 
 
 
