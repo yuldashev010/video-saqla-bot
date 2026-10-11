@@ -27,10 +27,20 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
+
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Video havolasini yubor, men uni yuklab berishga harakat qilaman."
+        "📥 VIDEO SAQLA BOT — FOYDALANISH YO‘RIQNOMASI\n\n"
+        "Assalomu alaykum! 👋 Botimizga xush kelibsiz!\n\n"
+        "🎬 Botdan qanday foydalaniladi?\n\n"
+        "1️⃣ YouTube, TikTok yoki Instagram’dan video havolasini nusxalang.\n"
+        "2️⃣ Havolani shu botga yuboring.\n"
+        "3️⃣ Bot videoni yuklab olishga harakat qiladi.\n"
+        "4️⃣ Video tayyor bo‘lsa, uni telefoningizga saqlab olishingiz mumkin.\n\n"
+        "📌 Misol:\n"
+        "Havolani yuboring — bot uni qayta ishlaydi."
     )
+
 
 
 async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
