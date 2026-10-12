@@ -1,2 +1,3 @@
-python-telegram-bot==22.6
-yt-dlp[default]
+python-telegram-bot
+yt-dlp --upgrade
+
