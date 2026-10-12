@@ -20,7 +20,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     ism = user.first_name if user and user.first_name else "do‘stim"
@@ -33,8 +32,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-
-
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "📥 VIDEO SAQLA BOT — FOYDALANISH YO‘RIQNOMASI\n\n"
@@ -44,15 +41,17 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "2️⃣ Havolani shu botga yuboring.\n"
         "3️⃣ Bot videoni yuklab olishga harakat qiladi.\n"
         "4️⃣ Video tayyor bo‘lsa, uni telefoningizga saqlab olishingiz mumkin.\n\n"
-        "📌 Misol:\n"
-        "Havolani yuboring — bot uni qayta ishlaydi."
+        "📌 Havolani yuboring — bot uni qayta ishlaydi."
     )
 
 
-
 async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not update.message or not update.message.text:
+        return
+
     url = update.message.text.strip()
     domain = urlparse(url).netloc.lower().split(":")[0]
+
     allowed = (
         domain == "youtu.be"
         or domain.endswith(".youtube.com")
@@ -64,7 +63,9 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     if not url.startswith(("https://", "http://")) or not allowed:
-        await update.message.reply_text("Iltimos, YouTube, Instagram yoki TikTok havolasini yubor.")
+        await update.message.reply_text(
+            "Iltimos, YouTube, Instagram yoki TikTok havolasini yubor."
+        )
         return
 
     msg = await update.message.reply_text("⏳ Video yuklanmoqda...")
@@ -74,7 +75,6 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
             options = {
                 "outtmpl": str(Path(temp_dir) / "video.%(ext)s"),
                 "format": "best[filesize<45M]/best",
-                "max_filesize": 45 * 1024 * 1024,
                 "noplaylist": True,
                 "quiet": True,
                 "no_warnings": True,
@@ -85,6 +85,7 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 filename = ydl.prepare_filename(info)
 
             file_path = Path(filename)
+
             if not file_path.exists():
                 candidates = list(Path(temp_dir).glob("video.*"))
                 if not candidates:
@@ -92,7 +93,9 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 file_path = candidates[0]
 
             if file_path.stat().st_size > 45 * 1024 * 1024:
-                await msg.edit_text("Video 45 MB dan katta. Boshqa video yubor.")
+                await msg.edit_text(
+                    "❌ Video 45 MB dan katta. Boshqa video yubor."
+                )
                 return
 
             with file_path.open("rb") as video:
@@ -104,17 +107,20 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await msg.delete()
 
     except Exception as e:
-    logger.exception("Video yuklashda xatolik")
-    await msg.edit_text(
-        f"❌ Xatolik: {str(e)[:800]}"
-    )
+        logger.exception("Video yuklashda xatolik")
+        await msg.edit_text(
+            f"❌ Xatolik: {str(e)[:800]}"
+        )
 
 
 def main():
     if not TOKEN:
-        raise RuntimeError("Render'da BOT_TOKEN Environment Variable sozlanmagan")
+        raise RuntimeError(
+            "TELEGRAM_BOT_TOKEN Environment Variable sozlanmagan"
+        )
 
     app = Application.builder().token(TOKEN).build()
+
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(
