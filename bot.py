@@ -22,8 +22,11 @@ logger = logging.getLogger(__name__)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    ism = user.first_name if user and user.first_name else "do‘stim"
+
     await update.message.reply_text(
-        "👋 Assalomu alaykum!\n\n"
+        f"👋 Assalomu alaykum, {ism}!\n\n"
         "📥 VIDEO SAQLA BOT ga xush kelibsiz!\n\n"
         "🎬 YouTube, Instagram yoki TikTok videosini saqlamoqchimisiz?\n"
         "🔗 Shunchaki video havolasini yuboring — qolganini bot bajaradi!"
