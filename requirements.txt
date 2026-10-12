@@ -1,2 +1,2 @@
 python-telegram-bot
-yt-dlp[default]>=2025.11.12
+yt-dlp[default]
