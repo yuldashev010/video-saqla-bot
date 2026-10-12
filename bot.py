@@ -103,12 +103,11 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             await msg.delete()
 
-    except Exception:
-        logger.exception("Video yuklashda xatolik")
-        await msg.edit_text(
-            "❌ Videoni yuklay olmadim. Havola ishlashini tekshir; "
-            "video yopiq yoki sayt tomonidan cheklangan bo‘lishi mumkin."
-        )
+    except Exception as e:
+    logger.exception("Video yuklashda xatolik")
+    await msg.edit_text(
+        f"❌ Xatolik: {str(e)[:800]}"
+    )
 
 
 def main():
