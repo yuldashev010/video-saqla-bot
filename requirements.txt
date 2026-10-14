@@ -1,3 +1,4 @@
 aiogram==3.17.0
-yt-dlp==2025.1.26
+yt-dlp
 requests==2.31.0
+
