@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Token va Admin ID ni shu yerga yozing
 TOKEN = "8617585421:AAGGXyKGNI7q83sjPugW0kqtqZ0x--P-aAQ"
-ADMIN_ID = 123456789  # O'zingizning Telegram ID raqamingizni yozing
+ADMIN_ID = @Yuldawev_010  # O'zingizning Telegram ID raqamingizni yozing
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
