@@ -16,7 +16,7 @@ from telegram.ext import (
     filters,
 )
 
-TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TOKEN = "8617585421:AAEsSVjavLegxAAiVJFLKnrZ2cP9moYkpbo"
 MAX_UPLOAD_MB = 45
 DOWNLOAD_SEMAPHORE = asyncio.Semaphore(2)
 
