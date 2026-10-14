@@ -1,9 +1,19 @@
-# Media Downloader Telegram Bot
+# 🎬 Video Saqla Bot
 
-Bu bot Instagram, YouTube va TikTok tarmoqlaridan video hamda videodagi musiqani yuklab beruvchi bot.
+YouTube, Instagram va TikTok havolalari orqali videolarni yuklab olishga yordam beruvchi Telegram bot.
 
-## Xususiyatlari:
-- Video yuklab olish (YouTube, Instagram, TikTok)
-- Videodagi musiqani (audio) alohida ajratib berish
-- Foydalanuvchilarni bazaga saqlash va "sanoq" orqali statistika ko'rish
+## ✨ Imkoniyatlar
+- 📹 YouTube videolari
+- 📸 Instagram videolari
+- 🎵 TikTok videolari
+- ⚡ Oddiy va qulay foydalanish
+- 🤖 `/start` va `/help` buyruqlari
+
+## 🚀 Ishga tushirish
+
+1. Python o‘rnating.
+2. Kerakli kutubxonalarni o‘rnating:
+
+   ```bash
+   pip install -r requirements.txt
 
