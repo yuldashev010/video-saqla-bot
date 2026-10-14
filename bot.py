@@ -181,9 +181,9 @@ async def handle_link(
 
     except Exception as error:
         logger.exception(
-            "Video yuklashda xatolik: %s",
-            error,
-        )
+    "Video yuklashda xatolik: %s",
+    error,
+)
 
         details = str(error).lower()
 
