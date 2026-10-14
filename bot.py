@@ -11,7 +11,7 @@ import yt_dlp
 logging.basicConfig(level=logging.INFO)
 
 # Token va Admin ID ni shu yerga yozing
-TOKEN = "SIZNING_TELEGRAM_BOT_TOKENINGIZ"
+TOKEN = "8617585421:AAGGXyKGNI7q83sjPugW0kqtqZ0x--P-aAQ"
 ADMIN_ID = 123456789  # O'zingizning Telegram ID raqamingizni yozing
 
 bot = Bot(token=TOKEN)
